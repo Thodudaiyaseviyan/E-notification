@@ -1,0 +1,54 @@
+/* Basic styling for better appearance */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    background-image: url('pexels-codioful-6985001.jpg'); /* Replace 'background.jpg' with the path to your image file */
+    /* Ensure the background image covers the entire viewport */
+    background-size: cover;
+    /* Center the background image horizontally and vertically */
+    background-position: center;
+    /* Set a fixed background attachment to prevent scrolling */
+    background-attachment: fixed;
+}
+.page-title {
+    font-size: 2em; /* Adjust font size as needed */
+    text-align: center;
+    margin-bottom: 20px;
+}
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color:none;
+    padding: 20px;
+    border-radius: 5px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

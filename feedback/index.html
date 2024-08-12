@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <h1 class="page-title">Feedback Form</h1>
+
+    <form id="feedbackForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="locality">Locality:</label>
+        <input type="text" id="locality" name="locality" required>
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+        <input type="submit" value="Submit Feedback">
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

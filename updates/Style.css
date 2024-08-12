@@ -1,0 +1,101 @@
+/* styles.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; 
+    background-color: #58f6e6;
+    color: #4e50ec;
+    line-height: 1.6;
+    /* styles.css */
+
+    /* Set the background image */
+    background-image: url('ind.jpg'); /* Replace 'background.jpg' with the path to your image file */
+    /* Ensure the background image covers the entire viewport */
+    background-size: cover;
+    /* Center the background image horizontally and vertically */
+    background-position: center;
+    /* Set a fixed background attachment to prevent scrolling */
+    background-attachment: fixed;
+
+
+}
+
+header {
+    background-color: #333;
+    color: #44e9de;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 5rem auto;
+    max-width: 800px;
+}
+
+.update-card {
+    background-color: #def1f7;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 2rem;
+    margin: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 100%;
+    animation: glitter 2s ease infinite
+}
+
+.update-card:hover {
+    transform: translateY(-5px);
+}
+
+.update-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.update-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+@keyframes glitter {
+    0% { color: rgb(246, 10, 10); } /* Red */
+    25% { color: rgb(6, 125, 6); } /* Green */
+    50% { color: rgb(0, 0, 255); } /* Blue */
+    75% { color: rgb(27, 180, 169); } /* Yellow */
+    100% { color: rgb(255, 0, 255); } /* Magenta */
+}

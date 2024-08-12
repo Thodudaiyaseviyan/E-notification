@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Dependent Dropdown</title>
+<style>
+   .button {
+    display: inline-block;
+    padding: 0.5em 1em; /* Adjust padding as needed */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none;
+    border-radius: 4px; /* Rounded corners */
+    border: none;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+    transition: background-color 0.3s ease;
+}
+.button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+  body {
+    font-family: Arial, sans-serif; 
+    background-color: #58f6e6;
+    color: #f4f4f7;
+    line-height: 1.6;
+    padding: 20px;
+    background-image: url('ind.jpg');
+    background-size: cover;
+    /* Center the background image horizontally and vertically */
+    background-position: center;
+    /* Set a fixed background attachment to prevent scrolling */
+    background-attachment: fixed;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+  }
+  #bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height:au;
+    z-index: -1; /* Ensure the video stays behind other content */
+}
+
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #e7ecf3;
+  }
+</style>
+</head>
+<body>
+
+<h1>SELECT YOUR LOCALITY</h1>
+
+<form>
+  <video autoplay muted loop id="bg-video">
+    <source src="tech.mp4" type="video/mp4">
+    <!-- Add additional source elements for other video formats if needed -->
+    Your browser does not support the video tag.
+</video>
+
+  <label for="State">State:</label>
+  <select id="State" name="state">
+    <option value="">Select state</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+  </select>
+
+  <label for="District">District:</label>
+  <select id="District" name="district">
+    <option value="">Select District</option>
+  </select>
+  
+  <label for="Taluk">Taluk:</label>
+  <select id="Taluk" name="taluk">
+    <option value="">Select Taluk</option>
+  </select>
+
+  <a href="updates/index.html" class="button">Submit</a>
+</form>
+
+<script>
+var cityOptions = {
+  "Tamil Nadu": {
+    "Vellore": {
+      "districtName": "Vellore",
+      "talukList": ["Vellore", "Anaicut", "Katpadi","Gudiyatham","Anaicut","Pernambut","K.V.Kuppam"]
+    },
+    "Chennai": {
+      "districtName": "Chennai",
+      "talukList": ["Tondiarpet Taluk", "Perambur Taluk", "Madhavaram Taluk"]
+    },
+    "Dindugal": {
+      "districtName": "Dindugal",
+      "talukList": ["Dindugal Taluk", "Natham Taluk", "Palani Taluk"]
+    },
+    "Ranipet": {
+      "districtName": "Ranipet",
+      "talukList": ["Ranipet Taluk", "Arcot Taluk", "Sholinghur Taluk"]
+    },
+    "Erode":{
+      "districtName": "Erode",
+    },
+    "Kancheepuram":{
+      "districtName": "Kancheepuram"
+    },
+    "Thirunelveli":{
+      "districtName": "Thirunelveli"
+    },
+    "Thoothukudi":{
+      "districtName": "Thoothukudi"
+    },
+    "Erode":{
+      "districtName": "Erode"
+    },
+    "Ariyalur":{
+      "districtName": "Ariyalur"
+    },
+    "Kallakurichi":{
+      "districtName": "Kallakurichi"
+    },
+    "Dharmapuri":{
+      "districtName": "Dharmapuri"
+    },
+    "Karur":{
+      "districtName": "Karur"
+    },
+    "Mayiladuthurai":{
+      "districtName": "Mayiladuthurai"
+    },
+    "Nagapattinam":{
+      "districtName": "Nagapattinam"
+    },
+    "Namakkal":{
+      "districtName": "Namakkal"
+    },
+    "Perambalur":{
+      "districtName": "Perambalur"
+    },
+    "Pudukottai":{
+      "districtName": "Pudukottai"
+    },
+    "Ramanathapuram":{
+      "districtName": "Ramanathapuram"
+    },
+    "Ramanathapuram":{
+      "districtName": "Ramanathapuram"
+    },
+    " Salem":{
+      "districtName": " Salem"
+    },
+    " Sivagangai":{
+      "districtName": "Sivagangai"
+    },
+    "Tenkasi":{
+      "districtName": "Tenkasi"
+    },
+    "Thanjavur":{
+      "districtName": "Tenkasi"
+    },
+    "Theni":{
+      "districtName": "Theni"
+    },
+    "Thiruvarur":{
+      "districtName": "Thiruvarur"
+    },
+    "Trichirappalli ":{
+      "districtName": "Trichirappalli "
+    },
+    "Tiruppur ":{
+      "districtName": "Tiruppur "
+    },
+    "Tiruvannamalai":{
+      "districtName": "Tiruvannamalai "
+    },
+    "The Nilgiris":{
+      "districtName": "The Nilgiris"
+    },
+    "Viluppuram":{
+      "districtName": "Viluppuram"
+    },
+    
+    "VVirudhunagar":{
+      "districtName": "Virudhunagar"
+    },
+    "Kanniyakumari":{
+        "districtName":"Kanniyakumari",
+        "talukList":["Agasteeswaran" ,"Thovalai","Kalkulam","Vilavancode","Thiruvattar","Killiyoor" ]
+    }
+    
+  },
+  "Andhra Pradesh": {
+  }
+};
+function populateDistricts() {
+  var stateSelect = document.getElementById("State");
+  var districtSelect = document.getElementById("District");
+  var selectedState = stateSelect.value;
+  districtSelect.innerHTML = "<option value=''>Select District</option>";
+  if (selectedState && cityOptions[selectedState]) {
+    for (var district in cityOptions[selectedState]) {
+      var option = document.createElement("option");
+      option.text = cityOptions[selectedState][district].districtName;
+      option.value = district;
+      districtSelect.appendChild(option);
+    }
+  }
+}
+function populateTaluks() {
+  var stateSelect = document.getElementById("State");
+  var districtSelect = document.getElementById("District");
+  var talukSelect = document.getElementById("Taluk");
+  var selectedState = stateSelect.value;
+  var selectedDistrict = districtSelect.value;
+  talukSelect.innerHTML = "<option value=''>Select Taluk</option>";
+  if (selectedState && selectedDistrict && cityOptions[selectedState][selectedDistrict]) {
+    cityOptions[selectedState][selectedDistrict].talukList.forEach(function(taluk) {
+      var option = document.createElement("option");
+      option.text = taluk;
+      option.value = taluk;
+      talukSelect.appendChild(option);
+    });
+  }
+}
+document.getElementById("State").addEventListener("change", populateDistricts);
+document.getElementById("District").addEventListener("change", populateTaluks);
+populateDistricts();
+populateTaluks();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.blinking-star {
+    font-size: 24px;
+    animation: blink 1s infinite; /* Blink animation */
+}
+
+/* Define keyframes for blink animation */
+@keyframes blink {
+    0%, 100% { color: red; }
+    14.28% { color: orange; }
+    28.56% { color: yellow; }
+    42.84% { color: green; }
+    57.12% { color: blue; }
+    71.4% { color: indigo; }
+    85.68% { color: violet; }
+}

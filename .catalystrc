@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "7066000000005074",
+      "name": "Enotification",
+      "domain": {
+        "id": "50018925924",
+        "name": "enotification-60028821211.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60028821211",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

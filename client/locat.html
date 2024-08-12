@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Dependent Dropdown</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+  }
+
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<h1>Dynamic Dependent Dropdown Example</h1>
+
+<form>
+  <label for="State">State:</label>
+  <select id="State" name="state">
+    <option value="">Select state</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <!-- Add more states as needed -->
+  </select>
+
+  <label for="District">District:</label>
+  <select id="District" name="district">
+    <option value="">Select District</option>
+  </select>
+  
+  <label for="Taluk">Taluk:</label>
+  <select id="Taluk" name="taluk">
+    <option value="">Select Taluk</option>
+  </select>
+
+  <input type="submit" value="Submit">  
+</form>
+
+<script>
+var cityOptions = {
+  "Tamil Nadu": {
+    "Vellore": {
+      "districtName": "Vellore",
+      "talukList": ["Vellore", "Anaicut", "Katpadi","Gudiyatham","Anaicut","Pernambut","K.V.Kuppam"]
+    },
+    "Chennai": {
+      "districtName": "Chennai",
+      "talukList": ["Tondiarpet Taluk", "Perambur Taluk", "Madhavaram Taluk"]
+    },
+    "Dindugal": {
+      "districtName": "Dindugal",
+      "talukList": ["Dindugal Taluk", "Natham Taluk", "Palani Taluk"]
+    },
+    "Ranipet": {
+      "districtName": "Ranipet",
+      "talukList": ["Ranipet Taluk", "Arcot Taluk", "Sholinghur Taluk"]
+    },
+    "Erode":{
+      "districtName": "Erode",
+    },
+    "Kancheepuram":{
+      "districtName": "Kancheepuram"
+    },
+    "Thirunelveli":{
+      "districtName": "Thirunelveli"
+    },
+    "Thoothukudi":{
+      "districtName": "Thoothukudi"
+    },
+    "Erode":{
+      "districtName": "Erode"
+    },
+    "Ariyalur":{
+      "districtName": "Ariyalur"
+    },
+    "Kallakurichi":{
+      "districtName": "Kallakurichi"
+    },
+    "Dharmapuri":{
+      "districtName": "Dharmapuri"
+    },
+    "Karur":{
+      "districtName": "Karur"
+    },
+    "Mayiladuthurai":{
+      "districtName": "Mayiladuthurai"
+    },
+    "Nagapattinam":{
+      "districtName": "Nagapattinam"
+    },
+    "Namakkal":{
+      "districtName": "Namakkal"
+    },
+    "Perambalur":{
+      "districtName": "Perambalur"
+    },
+    "Pudukottai":{
+      "districtName": "Pudukottai"
+    },
+    "Ramanathapuram":{
+      "districtName": "Ramanathapuram"
+    },
+    "Ramanathapuram":{
+      "districtName": "Ramanathapuram"
+    },
+    " Salem":{
+      "districtName": " Salem"
+    },
+    " Sivagangai":{
+      "districtName": "Sivagangai"
+    },
+    "Tenkasi":{
+      "districtName": "Tenkasi"
+    },
+    "Thanjavur":{
+      "districtName": "Tenkasi"
+    },
+    "Theni":{
+      "districtName": "Theni"
+    },
+    "Thiruvarur":{
+      "districtName": "Thiruvarur"
+    },
+    "Trichirappalli ":{
+      "districtName": "Trichirappalli "
+    },
+    "Tiruppur ":{
+      "districtName": "Tiruppur "
+    },
+    "Tiruvannamalai":{
+      "districtName": "Tiruvannamalai "
+    },
+    "The Nilgiris":{
+      "districtName": "The Nilgiris"
+    },
+    "Viluppuram":{
+      "districtName": "Viluppuram"
+    },
+    
+    "VVirudhunagar":{
+      "districtName": "Virudhunagar"
+    },
+    "Kanniyakumari":{
+        "districtName":"Kanniyakumari",
+        "talukList":["Agasteeswaran" ,"Thovalai","Kalkulam","Vilavancode","Thiruvattar","Killiyoor" ]
+    }
+    
+  },
+  "Andhra Pradesh": {
+    
+  }
+  
+};
+
+function populateDistricts() {
+  var stateSelect = document.getElementById("State");
+  var districtSelect = document.getElementById("District");
+  var selectedState = stateSelect.value;
+
+  // Clear district dropdown options
+  districtSelect.innerHTML = "<option value=''>Select District</option>";
+
+  // Populate district dropdown with options based on selected state
+  if (selectedState && cityOptions[selectedState]) {
+    for (var district in cityOptions[selectedState]) {
+      var option = document.createElement("option");
+      option.text = cityOptions[selectedState][district].districtName;
+      option.value = district;
+      districtSelect.appendChild(option);
+    }
+  }
+}
+
+function populateTaluks() {
+  var stateSelect = document.getElementById("State");
+  var districtSelect = document.getElementById("District");
+  var talukSelect = document.getElementById("Taluk");
+  var selectedState = stateSelect.value;
+  var selectedDistrict = districtSelect.value;
+
+  // Clear taluk dropdown options
+  talukSelect.innerHTML = "<option value=''>Select Taluk</option>";
+
+  // Populate taluk dropdown with options based on selected district
+  if (selectedState && selectedDistrict && cityOptions[selectedState][selectedDistrict]) {
+    cityOptions[selectedState][selectedDistrict].talukList.forEach(function(taluk) {
+      var option = document.createElement("option");
+      option.text = taluk;
+      option.value = taluk;
+      talukSelect.appendChild(option);
+    });
+  }
+}
+
+// Event listeners for state and district selection changes
+document.getElementById("State").addEventListener("change", populateDistricts);
+document.getElementById("District").addEventListener("change", populateTaluks);
+
+// Initially populate district dropdown based on default state selection
+populateDistricts();
+// Initially populate taluk dropdown based on default district selection
+populateTaluks();
+
+</script>
+
+</body>
+</html>
